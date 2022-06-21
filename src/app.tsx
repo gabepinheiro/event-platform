@@ -4,7 +4,7 @@ export function App() {
   const { lessons } = useLessons()
 
   if (!lessons) {
-    return <p>Fetching lessons...</p>
+    return <p>Fetching lessons.....</p>
   }
 
   return (
