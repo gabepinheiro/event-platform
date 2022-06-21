@@ -4,7 +4,8 @@
     "react-app/jest",
     "standard",
     "standard-jsx",
-    "standard-react"
+    "standard-react",
+    "prettier"
   ],
   "plugins": [
     "jsx-a11y"
@@ -20,6 +21,8 @@
         "functions": "always-multiline"
       }
     ],
+    "indent": "error",
+    "space-before-function-paren": "off",
     "no-undef": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-pascal-case": "off",
