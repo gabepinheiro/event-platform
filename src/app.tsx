@@ -1,20 +1,9 @@
-import { useQuery } from '@apollo/client'
-
-import { GET_LESSONS_QUERY } from '@/lib/querys'
-
-type Lesson = {
-  id: string
-  title: string
-}
-
-type LessonsResponseData = {
-  lessons: Lesson[]
-}
+import { useLessons } from '@/lib/hooks'
 
 export function App() {
-  const { data } = useQuery<LessonsResponseData>(GET_LESSONS_QUERY)
+  const { lessons } = useLessons()
 
-  if (!data) {
+  if (!lessons) {
     return <p>Fetching lessons...</p>
   }
 
@@ -23,7 +12,7 @@ export function App() {
       <h1>Event Platform</h1>
       <h2>Lessons: </h2>
       <ul>
-        {data.lessons.map((lesson) => (
+        {lessons.map((lesson) => (
           <li key={lesson.id}>{lesson.title}</li>
         ))}
       </ul>
