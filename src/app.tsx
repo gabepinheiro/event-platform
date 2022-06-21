@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { client } from '@/lib/apollo'
+import { useQuery } from '@apollo/client'
+
 import { GET_LESSONS_QUERY } from '@/lib/querys'
 
 type Lesson = {
@@ -12,21 +12,9 @@ type LessonsResponseData = {
 }
 
 export function App() {
-  const [lessons, setLessons] = useState<Lesson[] | null>(null)
+  const { data } = useQuery<LessonsResponseData>(GET_LESSONS_QUERY)
 
-  useEffect(() => {
-    async function fetchLessons() {
-      const { data } = await client.query<LessonsResponseData>({
-        query: GET_LESSONS_QUERY,
-      })
-
-      setLessons(data.lessons)
-    }
-
-    fetchLessons()
-  }, [])
-
-  if (!lessons) {
+  if (!data) {
     return <p>Fetching lessons...</p>
   }
 
@@ -35,7 +23,7 @@ export function App() {
       <h1>Event Platform</h1>
       <h2>Lessons: </h2>
       <ul>
-        {lessons.map((lesson) => (
+        {data.lessons.map((lesson) => (
           <li key={lesson.id}>{lesson.title}</li>
         ))}
       </ul>
