@@ -1,5 +1,7 @@
 import { CheckCircle, Lock } from 'phosphor-react'
 
+import { isPast } from 'date-fns'
+
 type LessonType = 'live' | 'class'
 
 type LessonProps = {
@@ -10,7 +12,7 @@ type LessonProps = {
 }
 
 export function Lesson({ title, slug, availableAt, type }: LessonProps) {
-  const isLessonAvailable = false
+  const isLessonAvailable = isPast(availableAt)
 
   return (
     <a href={slug}>
