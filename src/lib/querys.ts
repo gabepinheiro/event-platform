@@ -5,6 +5,9 @@ export const GET_LESSONS_QUERY = gql`
     lessons {
       id
       title
+      slug
+      lessonType
+      availableAt
     }
   }
 `
