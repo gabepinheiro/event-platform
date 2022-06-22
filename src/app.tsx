@@ -1,4 +1,5 @@
 import { useLessons } from '@/lib/hooks'
+import { Header } from '@/components'
 
 export function App() {
   const { lessons } = useLessons()
@@ -9,6 +10,7 @@ export function App() {
 
   return (
     <div>
+      <Header />
       <h1>Event Platform</h1>
       <h2>Lessons: </h2>
       <ul>
