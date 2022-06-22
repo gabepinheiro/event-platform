@@ -1,6 +1,7 @@
 import { CheckCircle, Lock } from 'phosphor-react'
 
-import { isPast } from 'date-fns'
+import { format, isPast } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
 type LessonType = 'live' | 'class'
 
@@ -13,10 +14,21 @@ type LessonProps = {
 
 export function Lesson({ title, slug, availableAt, type }: LessonProps) {
   const isLessonAvailable = isPast(availableAt)
+  const availableDateFormatted = format(
+    availableAt,
+    "EEEE' • 'd' de 'MMMM' • 'k'h'mm",
+    { locale: ptBR },
+  )
+
+  const availableDateCapitalize =
+    availableDateFormatted.at(0)?.toLocaleUpperCase() +
+    availableDateFormatted.slice(1)
 
   return (
     <a href={slug}>
-      <span className='text-gray-300'>{availableAt.toString()}</span>
+      <span className='text-gray-300 first-letter:uppercase'>
+        {availableDateCapitalize}
+      </span>
 
       <div className='rounded border border-gray-500 p-4 mt-2 '>
         <header className='flex items-center justify-between'>
