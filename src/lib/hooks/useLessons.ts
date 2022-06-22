@@ -6,7 +6,7 @@ export type Lesson = {
   id: string
   title: string
   slug: string
-  lessonType: string
+  lessonType: 'live' | 'class'
   availableAt: string
 }
 
