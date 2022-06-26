@@ -1,4 +1,5 @@
 import { Lesson } from '@/components'
+
 import { useLessons } from '@/lib/hooks'
 
 export function Sidebar() {

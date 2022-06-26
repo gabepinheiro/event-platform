@@ -1,12 +1,11 @@
 import { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useMutation } from '@apollo/client'
-import { CREATE_SUBSCRIBE_MUTATION } from '@/lib/mutations'
+import { useCreateSubscribeMutation } from '@/graphql/generated'
 
 import { Logo } from '@/components'
 
-import codeMockupImg from '@/assets/code-mockup.png'
+import codeMockupImg from '../assets/code-mockup.png'
 
 type OnFormSubmitEvent = FormEvent<HTMLFormElement> & {
   currentTarget: {
@@ -16,7 +15,7 @@ type OnFormSubmitEvent = FormEvent<HTMLFormElement> & {
 }
 
 export default function Subscribe () {
-  const [createSubsribe, { data, loading }] = useMutation(CREATE_SUBSCRIBE_MUTATION)
+  const [createSubsribe, { data, loading }] = useCreateSubscribeMutation()
   const navigate = useNavigate()
 
   const handleSubscribe = async (e: OnFormSubmitEvent) => {

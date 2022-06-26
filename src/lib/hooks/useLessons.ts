@@ -1,6 +1,4 @@
-import { useQuery } from '@apollo/client'
-
-import { GET_LESSONS_QUERY } from '@/lib/querys'
+import { useGetLessonsQuery } from '@/graphql/generated'
 
 export type Lesson = {
   id: string
@@ -15,7 +13,7 @@ export type QueryLessonsResponseData = {
 }
 
 export const useLessons = () => {
-  const { data, loading } = useQuery<QueryLessonsResponseData>(GET_LESSONS_QUERY)
+  const { data, loading } = useGetLessonsQuery()
 
   return {
     lessons: data?.lessons, loading,
